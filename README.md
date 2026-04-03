@@ -11,6 +11,7 @@ Lista de exercícios e códigos desenvolvidos durante as aulas de laboratório:
 
 | Data | Conteúdo da Prática |
 | :--- | :--- | 
+| 06/03 | Introdutória (sem arquivo) |
 | 13/03 | Algoritmos e programas sequenciais |
 | 20/03 | Comandos de seleção (if, if-else, switch) |
 | 27/03 | Comandos iterativos (while, do-while) |
