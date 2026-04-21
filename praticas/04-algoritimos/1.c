@@ -1,31 +1,31 @@
-/*
-Faz um somat�rio das entradas.
-Feito por: Maxine Klein
+/* =========================================================================
+ * Autor        : Maxine Klein
+ * Data de Criação : 27/03/2026
+ * Descrição    : Lê números reais até que o usuário digite 0 e exibe
+ *                o somatório dos valores informados.
+ * =========================================================================
 */
 
 #include <stdio.h>
 
-int main ()
-{
+int main() {
+    double valor, somatorio;
+    int contador;
 
-    float somatorio, entrada;
-    int cont;
+    somatorio = 0.0;
+    contador = 1;
 
-    somatorio = 0;
-    cont = 1; // Para contar numero de somat�rios
+    printf("Entre com o %do valor: ", contador);
+    scanf("%lf", &valor);
 
-    do
-    {
-        printf("Insira o %d numero para o somatorio:\n", cont);
-        scanf("%f", &entrada);
-
-        somatorio += entrada;
-        cont++;
-
+    while (valor != 0) {
+        somatorio += valor;
+        contador++;
+        printf("Entre com o %do valor: ", contador);
+        scanf("%lf", &valor);
     }
-    while(entrada!=0); //Repete enquanto o numero entrado for diferente de 0
 
-    printf("Somatorio dos valores informados: %.1f", somatorio);
+    printf("Somatorio dos valores informados: %.1lf\n", somatorio);
 
     return 0;
 }
