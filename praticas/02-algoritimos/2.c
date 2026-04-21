@@ -1,27 +1,32 @@
-/*
-Insira a massa, meia vida e tempo e devolva a massa final, usando modelo matematico do decaimento radioativo.
+/* =========================================================================
+ * Autor        : Maxine Klein
+ * Data de Criação : 13/03/2026
+ * Descrição    : Calcula o decaimento de um material radiativo usando o
+ *                modelo da descrição do problema.
+ * =========================================================================
 */
 
 #include <stdio.h>
 #include <math.h>
 
-int main ()
-{
+int main() {
+    double massaIni, meiaVida, tempo, lambda, massaTotal;
 
-    float massaFinal, massaInicial, tempo, meiaVida;
+    printf("Massa inicial (m0): ");
+    scanf("%lf", &massaIni);
 
-    printf("Insira a massa \n");
-    scanf("%f", &massaInicial);
+    printf("Meia-vida (t_1/2): ");
+    scanf("%lf", &meiaVida);
 
-    printf("Insira a meia vida \n");
-    scanf("%f", &meiaVida);
+    printf("Tempo (t): ");
+    scanf("%lf", &tempo);
 
-    printf("Insira o tempo \n");
-    scanf("%f", &tempo);
+    lambda = log(2.0) / meiaVida;
 
-    massaFinal = massaInicial * exp((log(2)/meiaVida) * -1 * tempo);
+    massaTotal = massaIni * exp(-lambda * tempo);
 
-    printf("A massa final eh %.2f\n", massaFinal);
+    printf("\nMassa Total = %.2lf\n", massaTotal);
+
     return 0;
-
 }
+
