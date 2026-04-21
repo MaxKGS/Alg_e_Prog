@@ -1,25 +1,27 @@
-/*
-Insira o raio da esfera e depois calcule o volume e �rea superficial do maior cubo inscrito na esfera.
+/* =========================================================================
+ * Autor        : Maxine Klein
+ * Data de Criação : 21/04/2026
+ * Descrição    : Lê o raio de uma esfera e calcula o volume e a área
+ *                superficial do maior cubo inscrito nela.
+ * =========================================================================
 */
 
 #include <stdio.h>
 #include <math.h>
 
-int main ()
-{
+int main() {
+    double raio, lado, volume, area;
 
-    float raio, volume, area;
+    printf("Entre o raio da esfera: ");
+    scanf("%lf", &raio);
 
-    printf("Insira o raio \n");
-    scanf("%f", &raio);
+    lado = (2.0 * raio) / sqrt(3.0);
 
-    volume = (8 * pow(raio, 3) * sqrt(3))/ 9;
+    volume = lado * lado * lado;
+    area   = 6.0 * lado * lado;
 
-    area = 8 * pow(raio, 2);
-
-    printf("O valor do volume eh %f \n", volume);
-    printf("O valor da area eh %f \n", area);
+    printf("Volume do cubo inscrito: %lf\n", volume);
+    printf("Area superficial do cubo inscrito: %lf\n", area);
 
     return 0;
-
 }
