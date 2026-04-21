@@ -1,41 +1,29 @@
-/*
-Insira dois vetores de 3 elementos e devolver o produto fetorial entre eles.
+/* =========================================================================
+ * Autor        : Maxine Klein
+ * Data de Criação : 13/03/2026
+ * Descrição    : Lê dois vetores de 3 elementos inteiros e calcula
+ *                o produto vetorial entre eles.
+ *                Originalmente, feito sem vetores e apenas variaveis.
+ * =========================================================================
 */
 
 #include <stdio.h>
-#include <math.h>
 
-int main ()
-{
+int main() {
+    int a[3], b[3], resultado[3];
 
-    int x1, y1, z1, x2, y2, z2, x3, y3, z3;
+    printf("Entre as tres coordenadas do primeiro vetor: ");
+    scanf("%d %d %d", &a[0], &a[1], &a[2]);
 
-    printf("Insira o x do vetor 1 \n");
-    scanf("%d", &x1);
+    printf("Entre as tres coordenadas do segundo vetor: ");
+    scanf("%d %d %d", &b[0], &b[1], &b[2]);
 
-    printf("Insira o y do vetor 1 \n");
-    scanf("%d", &y1);
+    resultado[0] = a[1]*b[2] - a[2]*b[1];
+    resultado[1] = a[2]*b[0] - a[0]*b[2];
+    resultado[2] = a[0]*b[1] - a[1]*b[0];
 
-    printf("Insira o z do vetor 1 \n");
-    scanf("%d", &z1);
+    printf("O produto vetorial eh (%d %d %d)\n",
+           resultado[0], resultado[1], resultado[2]);
 
-    printf("Insira o x do vetor 2 \n");
-    scanf("%d", &x2);
-
-    printf("Insira o y do vetor 2 \n");
-    scanf("%d", &y2);
-
-    printf("Insira o z do vetor 2 \n");
-    scanf("%d", &z2);
-
-    x3 = (y1*z2 - z1*y2);
-    y3 = -1 * (x1*z2 - z1*x2);
-    z3 = (x1*y2 - y1*x2);
-
-    printf("O produto vetorial e:\n");
-    printf("%d ", x3);
-    printf("%d ", y3);
-    printf("%d", z3);
     return 0;
-
 }
