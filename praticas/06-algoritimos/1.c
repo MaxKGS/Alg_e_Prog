@@ -1,80 +1,60 @@
 /* ============================================================================
 * Autor           : Maxine Klein
-* Data de Criação : 10/04/2026
-* Descrição       : Le numeros e insere eles em um array. Depois, realiza certas operações com eles.
+* Data de CriaÃ§Ã£o : 10/04/2026
+* DescriÃ§Ã£o       : Le numeros e insere eles em um array. Depois, realiza certas operaÃ§Ãµes com eles.
 * ============================================================================
 */
 
+#include <stdio.h>
 
 #define MAX 1000
 
-#include <stdio.h>
+int main() {
+    int vetor[MAX];
+    int totalValores, valorLido, i;
+    double soma, media;
+    double somaMaiores, somaMenores;
+    int qtdMaiores, qtdMenores;
 
-int vetor[MAX];
-float media, maiores, menores;
-int x = 0;
-int i;
-int totalNumeros = 0;
-int totalMaiores = 0;
-int totalMenores = 0;
+    totalValores = 0;
+    soma = 0.0;
 
-int main()
-{
-    while (vetor[x-1] != -1)
-    {
-        printf("Insira um numero: \n"); //Insere numeros no vetor
-        scanf("%d", &vetor[x]);
-        if(vetor[x] != -1)
-        {
-            totalNumeros++;
-        }
-        if(vetor[x] < -1)
-        {
-            printf("Não pode se inserir numero negativo \n");
-            return 1;
-        }
-        x++;
+    printf("Entre os valores inteiros: ");
+    scanf("%d", &valorLido);
+
+    while (valorLido != -1) {
+        vetor[totalValores] = valorLido;
+        soma += valorLido;
+        totalValores++;
+        scanf("%d", &valorLido);
     }
 
-    //Media geral do vetor
+    media = soma / totalValores;
+    printf("Media dos valores informados: %lf\n", media);
 
-    for (i=0; i<totalNumeros; i++)
-    {
-        media += vetor[i];
-    }
-    media /= totalNumeros;
-    printf("Média eh: %f \n", media);
-
-    //Media de maiores do vetor
-
-    for (i=0; i<totalNumeros; i++)
-    {
-        if(vetor[i] > media)
-        {
-            totalMaiores++;
-            maiores += vetor[i];
+    qtdMaiores  = 0;
+    somaMaiores = 0.0;
+    for (i = 0; i < totalValores; i++) {
+        if (vetor[i] > media) {
+            qtdMaiores++;
+            somaMaiores += vetor[i];
         }
     }
-    printf("O total de numeros maiores que a media eh: %d \n", totalMaiores);
-    maiores /= totalMaiores;
-    printf("A media de numeros maiores eh: %f \n", maiores);
+    printf("Quantidade de valores maiores do que a media: %d\n", qtdMaiores);
+    printf("Media dos valores maiores do que %lf: %.5lf\n", media, somaMaiores / qtdMaiores);
 
-    //Media dos menos do vetor
-
-    for (i=0; i<totalNumeros; i++)
-    {
-        if(vetor[i] < media)
-        {
-            totalMenores++;
-            menores += vetor[i];
+    qtdMenores  = 0;
+    somaMenores = 0.0;
+    for (i = 0; i < totalValores; i++) {
+        if (vetor[i] < media) {
+            qtdMenores++;
+            somaMenores += vetor[i];
         }
     }
-    printf("O total de numeros menores que a media eh: %d \n", totalMenores);
-    menores /= totalMenores;
-    printf("A media de numeros menores eh: %f \n", menores);
+    printf("Quantidade de valores menores do que a media: %d\n", qtdMenores);
+    printf("Media dos valores menores do que %lf: %.5lf\n", media, somaMenores / qtdMenores);
 
     return 0;
 }
-
 
 
