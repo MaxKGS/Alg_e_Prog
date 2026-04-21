@@ -1,59 +1,43 @@
 /* ============================================================================
 * Autor           : Maxine Klein
-* Data de Criação : 03/04/2026
-* Descrição       : Gera uma barra de progesso.
-* Lê um numero real entre 0.0 e 1.0, qual representa a fração já processada.
-* Lê um numero intiro que representa o tamanho da barra.
+* Data de CriaÃ§Ã£o : 03/04/2026
+* DescriÃ§Ã£o       : Gera uma barra de progesso.
+* LÃª um numero real entre 0.0 e 1.0, qual representa a fraÃ§Ã£o jÃ¡ processada.
+* LÃª um numero intiro que representa o tamanho da barra.
 * ============================================================================
 */
 
-
 #include <stdio.h>
 
-int main(){
+int main() {
+    double progresso;
+    int tamanhoBarra, numPreenchido, numFaltante, i;
 
-    int tamBarra; float razBarra; // variaveis de entrada
-    int progBarra; // variavel do calculo do progresso da barra
-    int i; // incrementador
+    do {
+        printf("Entre com o progresso atual (x) e tamanho (N) da barra: ");
+        scanf("%lf %d", &progresso, &tamanhoBarra);
 
-    progBarra = 0;
+        if (progresso < 0.0 || progresso > 1.0)
+            printf("Erro: x deve estar entre 0.0 e 1.0.\n");
+        if (tamanhoBarra < 5 || tamanhoBarra > 50)
+            printf("Erro: N deve estar entre 5 e 50.\n");
 
-    printf("Digite a razao: \n");
-    scanf("%f", &razBarra);
+    } while (progresso < 0.0 || progresso > 1.0 || tamanhoBarra < 5 || tamanhoBarra > 50);
 
-    if(razBarra < 0 || razBarra > 1){
-        printf("a razao deve ser entre 0.0 e 1.0");
-        return 0;
-    }
-
-    printf("Digite o tamanho da barra: \n");
-    scanf("%d", &tamBarra);
-
-    if(tamBarra < 5 || tamBarra > 50){
-        printf("o tamanho da barra tem que ser entre 5 e 50");
-        return 0;
-    }
-
-    //calculo do progresso da barra (caso de numero quebrado, capar e somar um)
-
-    progBarra = tamBarra * razBarra;
-
-    if(progBarra % 1 != 0) {
-        progBarra = (int) (progBarra++);
-    }
-
-    //impressão da linha
+    numPreenchido = (int)(progresso * tamanhoBarra);
+    numFaltante   = tamanhoBarra - numPreenchido;
 
     printf("<");
 
-    for(i = 0; i < progBarra; i++){
+    for (i = 0; i < numPreenchido; i++) {
         printf("#");
     }
-    for(i = progBarra; i < tamBarra; i++){
+
+    for (i = 0; i < numFaltante; i++) {
         printf("-");
     }
 
-    printf(">");
+    printf(">\n");
 
     return 0;
 }
