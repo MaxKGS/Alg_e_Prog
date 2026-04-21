@@ -1,64 +1,47 @@
 /* ============================================================================
 * Autor           : Maxine Klein
-* Data de Criação : 10/04/2026
-* Descrição       : Pega o string, conta o numero de vogas e gera uma nova string com as letras invertidas
+* Data de CriaÃ§Ã£o : 10/04/2026
+* DescriÃ§Ã£o       : Pega o string, conta o numero de vogas e gera uma nova string com as letras invertidas
 * ============================================================================
 */
-
-
-#define TAMSTRING 1000
+#include <stdio.h>
+#include <ctype.h>
 
 #include <stdio.h>
+#include <ctype.h>
 
-char vetor[TAMSTRING + 1], novoVetor[TAMSTRING + 1];
-int i;
-int totalVogais = 0;
+#define TAMSTRING 100
 
+int main() {
+    char stringOriginal[TAMSTRING];
+    char stringInvertida[TAMSTRING];
+    int qtdVogais, i;
+    char letra;
 
-int main()
-{
-    printf("Insira a frase: \n");
-    fgets(vetor, TAMSTRING, stdin);
+    printf("Entre a string: ");
+    fgets(stringOriginal, TAMSTRING, stdin);
 
-    for(i=0; i <= TAMSTRING; i++)
-    {
-        //Para o laço
+    qtdVogais = 0;
+    for (i = 0; stringOriginal[i] != '\0' && stringOriginal[i] != '\n'; i++) {
+        letra = tolower(stringOriginal[i]);
 
-        if(vetor[i] == 0)
-        {
-            break;
+        if (letra == 'a' || letra == 'e' || letra == 'i' ||
+            letra == 'o' || letra == 'u') {
+            qtdVogais++;
         }
-
-        //Conta vogais
-
-        if(vetor[i] == 'a' || vetor[i] == 'A' || vetor[i] == 'e' || vetor[i] == 'E' || vetor[i] == 'i' || vetor[i] == 'I' || vetor[i] == 'o' || vetor[i] == 'O' || vetor[i] == 'u' || vetor[i] == 'U')
-        {
-            totalVogais++;
-        }
-
-        //Deixa maiusculo
-
-        if(vetor[i] <= 91 && vetor[i] >=  65)
-        {
-            novoVetor[i] = vetor[i] + 32;
-        }
-
-        //Deixa minusculo
-
-        else if(vetor[i] <= 122 && vetor[i] >=  97)
-        {
-            novoVetor[i] =  vetor[i] - 32;
-        }
-        else{
-            novoVetor[i] = vetor[i];
-        }
+        
+        if (isupper(stringOriginal[i]))
+            stringInvertida[i] = tolower(stringOriginal[i]);
+        else if (islower(stringOriginal[i]))
+            stringInvertida[i] = toupper(stringOriginal[i]);
+        else
+            stringInvertida[i] = stringOriginal[i];
     }
-    printf("Total de vogais: %d \n", totalVogais);
-    printf("%s", novoVetor);
+    stringInvertida[i] = '\0';
+
+    printf("Quantidade de vogais: %d\n", qtdVogais);
+    printf("Impressao da segunda string com inversao de maiusculas e minusculas: %s\n", stringInvertida);
 
     return 0;
-
 }
-
-
 
